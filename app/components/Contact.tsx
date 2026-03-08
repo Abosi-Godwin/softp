@@ -1,7 +1,6 @@
 "use client";
- 
 
-import { motion,Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Contact() {
@@ -157,7 +156,8 @@ export default function Contact() {
                                 </label>
                                 <select
                                     id="subject"
-                                    defaultValue="" // <-- React handles the initial state here
+                                    defaultValue=""
+                                    aria-label="inquiry type"
                                     className="w-full bg-secondary/50 border border-white/5 rounded-sm px-6 py-5 text-letters-muted appearance-none focus:outline-none focus:border-gold focus:bg-secondary transition-all duration-300 cursor-pointer"
                                 >
                                     <option value="" disabled>
