@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { CldImage } from "next-cloudinary";
 
@@ -22,18 +22,6 @@ export default function CinematicImage({
             crop="fill"
             gravity="auto"
             className={`object-cover transition-all duration-700 ease-in-out ${className}`}
-            overlays={[
-                {
-                    text: {
-                        color: "white",
-                        fontFamily: "Playfair Display",
-                        fontSize: 40,
-                        fontWeight: "bold",
-                        text: "SOFT P"
-                    },
-                    position: { gravity: "south_east", x: 20, y: 20 }
-                }
-            ]}
         />
     );
 }
