@@ -1,22 +1,33 @@
- @import "tailwindcss";
+/* 1. Direct Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+@import "tailwindcss";
 
 @theme {
-  /* Colors from your design */
-  --color-primary: #0b0f14;
-  --color-secondary: #121821;
-  --color-elevated: #1a2230;
-  --color-gold: #d4af37;
-  --color-gold-soft: #e6c767;
-  --color-letters-primary: #f5f7fa;
-  --color-letters-muted: #9ca3af;
+    /* Colors from your design */
+    --color-primary: #0b0f14;
+    --color-secondary: #121821;
+    --color-elevated: #1a2230;
+    --color-gold: #d4af37;
+    --color-gold-soft: #e6c767;
+    --color-letters-primary: #f5f7fa;
+    --color-letters-muted: #9ca3af;
 
-  /* Typography mapping to Next.js variables */
-  --font-heading: var(--font-playfair);
-  --font-body: var(--font-inter);
+    /* 2. Direct Typography Mapping */
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
 }
 
 @layer base {
-  h1, h2, h3, h4 {
-    @apply font-heading;
-  }
+    body {
+        @apply font-body bg-primary text-letters-primary antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+        @apply font-heading tracking-tight;
+    }
 }

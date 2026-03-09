@@ -60,7 +60,7 @@ export default function Contact() {
                                 href="mailto:jonathan@vancearts.com"
                                 className="text-xl font-heading text-letters-primary hover:text-gold transition-colors inline-block"
                             >
-                                jonathan@vancearts.com
+                                paulinus@softent.com
                             </a>
                         </div>
 
@@ -70,16 +70,16 @@ export default function Contact() {
                                 Talent Representation
                             </h3>
                             <p className="text-xl font-heading text-letters-primary">
-                                The Vanguard Agency
+                                The Soft Entertainment
                             </p>
                             <a
                                 href="mailto:contact@vanguard.com"
                                 className="text-letters-muted hover:text-gold transition-colors"
                             >
-                                contact@vanguard.com
+                                contact@softent.com
                             </a>
                             <p className="text-letters-muted">
-                                +1 (555) 019-8273
+                                +234 906 6016 591
                             </p>
                         </div>
 
@@ -89,7 +89,7 @@ export default function Contact() {
                                 Location
                             </h3>
                             <p className="text-xl font-heading text-letters-primary">
-                                Los Angeles, CA
+                                Abuja, NIG.
                             </p>
                             <p className="text-letters-muted">
                                 Available for global travel.
