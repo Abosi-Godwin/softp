@@ -1,14 +1,27 @@
+ "use client";
+
 import { CldImage } from "next-cloudinary";
 
-export function CinematicImage({ src, alt }: { src: string; alt: string }) {
+interface CinematicImageProps {
+    src: string;
+    alt: string;
+    className?: string;
+}
+
+export default function CinematicImage({
+    src,
+    alt,
+    className
+}: CinematicImageProps) {
     return (
         <CldImage
-            width="1200"
-            height="1600"
-            src={src}  
+            fill
+            src={src}
             alt={alt}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            tint="equalize:80:gray" 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            crop="fill"
+            gravity="auto"
+            className={`object-cover transition-all duration-700 ease-in-out ${className}`}
             overlays={[
                 {
                     text: {
@@ -21,7 +34,6 @@ export function CinematicImage({ src, alt }: { src: string; alt: string }) {
                     position: { gravity: "south_east", x: 20, y: 20 }
                 }
             ]}
-            className="object-cover hover:filter-none transition-all duration-700"
         />
     );
 }

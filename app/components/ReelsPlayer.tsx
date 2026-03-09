@@ -7,7 +7,7 @@ export function ReelPlayer({ src }: { src: string }) {
             width="1920"
             height="1080"
             src={src}
-            colors={{ accent: "#D4AF37" }} // Matches your Gold branding
+            colors={{ accent: "#D4AF37" }}  
             fontFace="Playfair Display"
             logo={{ imageUrl: "/logo.svg", onClickUrl: "https://softp.com" }}
         />

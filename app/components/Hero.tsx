@@ -2,9 +2,9 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import HeroImg from "../components/HeroImg";
 
 export default function Hero() {
-    // Animation variants for staggered text reveal
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -31,7 +31,6 @@ export default function Hero() {
             className="relative min-h-screen flex items-center pt-20 overflow-hidden"
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-                
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -84,16 +83,8 @@ export default function Hero() {
                 >
                     <div className="absolute inset-0 bg-secondary animate-pulse" />
 
-                    <Image
-                        src="/hero-portrait.jpg"
-                        alt="Onwumere paulinus Professional Portrait"
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover grayscale hover:grayscale-0
-                        transition-all duration-1000 ease-in-out"
-                    />
-
+                   
+                    <HeroImg />
                     {/* Subtle gold vignette overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
                 </motion.div>

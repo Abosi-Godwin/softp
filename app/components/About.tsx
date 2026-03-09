@@ -1,10 +1,10 @@
 "use client";
 
-//import { motion } from "framer-motion";
-import { motion, Variants } from "framer-motion"; // Add Variants import
+import { motion, Variants } from "framer-motion";
 
 export default function About() {
     const headline = "A lifelong dedication to the craft of storytelling.";
+
     const words = headline.split(" ");
 
     // Animation variants for the container
@@ -37,7 +37,6 @@ export default function About() {
             }
         }
     };
- 
 
     return (
         <section
@@ -81,7 +80,6 @@ export default function About() {
                         ))}
                     </motion.h2>
 
-                    {/* 4. Description with a slower fade */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -105,13 +103,12 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* 5. Modern Minimalist Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-white/5 w-full">
                         {[
                             { label: "Experience", val: "12+ YRS" },
-                            { label: "Projects", val: "48" },
+                            { label: "Projects", val: "18" },
                             { label: "Awards", val: "06" },
-                            { label: "Location", val: "LA / NYC" }
+                            { label: "Location", val: "ABJ / NG" }
                         ].map((stat, i) => (
                             <motion.div
                                 key={i}
