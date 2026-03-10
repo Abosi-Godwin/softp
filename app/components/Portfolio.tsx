@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import { Play } from "lucide-react";
 
 import CinematicImage from "../components/CinematicImage";
@@ -11,7 +11,7 @@ const PROJECTS = [
         title: "The Echoes Within",
         category: "Lead Role • Feature Film",
         year: "2025",
-        image: "1773034744087_pputdf"
+        image: "1773034773509_wuwyym"
     },
     {
         title: "Silent Rhythm",
@@ -65,7 +65,10 @@ export default function Portfolio() {
                                 <CinematicImage
                                     src={project.image}
                                     alt={project.title}
-                                    className="grayscale group-hover:grayscale-0 group-active:grayscale-0 group-focus:grayscale-0 transition-all duration-700"
+                                    className="grayscale group-hover:grayscale-0
+                                    group-active:grayscale-0
+                                    group-focus:grayscale-0 transition-[filter]
+                                    duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-80 group-hover:opacity-40 group-active:opacity-40 group-focus:opacity-40 transition-opacity duration-700" />
                             </div>
