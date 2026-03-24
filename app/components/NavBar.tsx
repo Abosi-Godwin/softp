@@ -1,93 +1,83 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export const navLinks = [
-    "ABOUT",
-    "ACTING",
-    "MUSIC",
-    "ANIMATION",
-    "GALLERY",
-    "CONTACT"
+    { name: "THE ARCHIVE", href: "/portfolio", label: "01" },
+    { name: "VISUALS", href: "/gallery", label: "02" },
+    { name: "ABOUT", href: "/about", label: "03" },
+    { name: "BOOKINGS", href: "/bookings", label: "04" }
 ];
 
-export default function NavBar () {
+const menuVariants: Variants = {
+    closed: {
+        opacity: 0,
+        y: "-100%",
+        transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
+    },
+    open: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
+    }
+};
+
+export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState("");
+    const pathname = usePathname();
 
     useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: "-20% 0px -70% 0px",
-            threshold: 0
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
         };
+    }, [isOpen]);
 
-        const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id.toUpperCase());
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(
-            handleIntersect,
-            observerOptions
-        );
-
-        navLinks.forEach(link => {
-            const element = document.getElementById(link.toLowerCase());
-            if (element) observer.observe(element);
-        });
-
-        return () => observer.disconnect();
-    }, []);
-
-    const menuVariants: Variants = {
-        closed: {
-            opacity: 0,
-            y: "-100%",
-            transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
-        },
-        open: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
-        }
-    };
+    const close = () => setIsOpen(false);
 
     return (
         <>
-            {/* Desktop Links */}
+            {/* Desktop */}
             <div className="hidden lg:flex gap-10">
-                {navLinks.map((link, i) => {
-                    const isActive = activeSection === link;
+                {navLinks.map(({ name, href }, i) => {
+                    const isActive = pathname === href;
                     return (
-                        <motion.a
-                            key={link}
+                        <motion.div
+                            key={href}
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            href={`#${link.toLowerCase()}`}
-                            className={`relative group text-[10px] font-bold tracking-[0.25em] transition-colors duration-500 ${
-                                isActive
-                                    ? "text-gold"
-                                    : "text-letters-muted hover:text-letters-primary"
-                            }`}
                         >
-                            {link}
-                            <span
-                                className={`absolute -bottom-1 left-0 h-[1px] bg-gold transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
-                            />
-                        </motion.a>
+                            <Link
+                                href={href}
+                                className={`relative group text-[10px] font-bold tracking-[0.25em] transition-colors duration-500 ${
+                                    isActive
+                                        ? "text-gold"
+                                        : "text-letters-muted hover:text-letters-primary"
+                                }`}
+                            >
+                                {name}
+                                <span
+                                    className={`absolute -bottom-1 left-0 h-[1px] bg-gold transition-all duration-500 ${
+                                        isActive
+                                            ? "w-full"
+                                            : "w-0 group-hover:w-full"
+                                    }`}
+                                />
+                            </Link>
+                        </motion.div>
                     );
                 })}
             </div>
 
+            {/* Mobile toggle */}
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpen(prev => !prev)}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
                 className="lg:hidden p-2 text-letters-primary hover:text-gold transition-colors z-50"
             >
                 {isOpen ? (
@@ -97,6 +87,7 @@ export default function NavBar () {
                 )}
             </button>
 
+            {/* Mobile menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -106,15 +97,22 @@ export default function NavBar () {
                         exit="closed"
                         className="fixed inset-0 h-screen bg-secondary flex flex-col justify-center items-center gap-8 z-40"
                     >
-                        {navLinks.map(link => (
-                            <motion.a
-                                key={link}
-                                href={`#${link.toLowerCase()}`}
-                                onClick={() => setIsOpen(false)}
-                                className={`text-2xl font-heading font-bold tracking-[0.2em] transition-colors ${activeSection === link ? "text-gold" : "text-letters-primary"}`}
+                        {navLinks.map(({ name, href, label }) => (
+                            <Link
+                                key={href}
+                                href={href}
+                                onClick={close}
+                                className={`text-2xl font-heading font-bold tracking-[0.2em] transition-colors ${
+                                    pathname === href
+                                        ? "text-gold"
+                                        : "text-letters-primary"
+                                }`}
                             >
-                                {link}
-                            </motion.a>
+                                <span className="text-gold text-xs mr-3">
+                                    {label}
+                                </span>
+                                {name}
+                            </Link>
                         ))}
                     </motion.div>
                 )}

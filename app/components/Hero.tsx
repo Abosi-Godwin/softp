@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import HeroImg from "../components/HeroImg";
 
 export default function Hero() {
@@ -66,12 +67,18 @@ export default function Hero() {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row gap-4 mt-4"
                     >
-                        <button className="px-10 py-4 bg-letters-primary text-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-gold transition-colors duration-500">
+                        <Link
+                            href="/portfolio"
+                            className="px-10 py-4 text-center bg-letters-primary text-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-gold transition-colors duration-500"
+                        >
                             Explore Portfolio
-                        </button>
-                        <button className="px-10 py-4 border border-letters-muted/30 text-letters-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:border-gold transition-colors duration-500">
+                        </Link>
+                        <Link
+                            href="/bookings"
+                            className="px-10 py-4 text-center border border-letters-muted/30 text-letters-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:border-gold transition-colors duration-500"
+                        >
                             Bookings
-                        </button>
+                        </Link>
                     </motion.div>
                 </motion.div>
 
@@ -83,7 +90,6 @@ export default function Hero() {
                 >
                     <div className="absolute inset-0 bg-secondary animate-pulse" />
 
-                   
                     <HeroImg />
                     {/* Subtle gold vignette overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />

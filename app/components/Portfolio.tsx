@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 import { Play } from "lucide-react";
 
@@ -102,20 +103,22 @@ export default function Portfolio() {
                     ))}
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="mt-20 flex justify-center"
-                >
-                    <button className="group relative flex flex-col items-center gap-4">
-                        <span className="text-[10px] font-bold tracking-[0.5em] text-letters-muted group-hover:text-gold transition-colors">
-                            VIEW ALL PRODUCTIONS
-                        </span>
-                        <div className="w-20 h-[1px] bg-white/10 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                        </div>
-                    </button>
-                </motion.div>
+              <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="mt-20 flex justify-center"
+>
+    <Link href="/portfolio" className="group relative flex flex-col items-center gap-4">
+        <span className="text-[10px] font-bold tracking-[0.5em] text-letters-muted group-hover:text-gold transition-colors">
+            VIEW ALL PRODUCTIONS
+        </span>
+        <div className="w-20 h-[1px] bg-white/10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+        </div>
+    </Link>
+</motion.div>
             </div>
         </section>
     );
