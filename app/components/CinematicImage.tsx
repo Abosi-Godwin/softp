@@ -17,7 +17,7 @@ export default function CinematicImage({ src, alt, className }: CinematicImagePr
           loading="eager"
             quality="auto"
             format="auto"
-            delivery="q_auto,f_auto"
+            
             crop="fill"
             gravity="auto"
             sizes="(max-width: 768px) 100vw, 50vw"

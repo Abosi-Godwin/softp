@@ -1,5 +1,10 @@
 import { v2 as cloudinary } from "cloudinary";
-import type { CloudinaryResource, MediaItem, MediaSize } from "../data/types";
+
+import type {
+    CloudinaryResource,
+    MediaItem,
+    MediaSize
+} from "../app/gallery/data/types";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -16,6 +21,7 @@ export async function fetchGalleryImages(limit = 50): Promise<MediaItem[]> {
         .execute();
 
     return (resources as CloudinaryResource[]).map((img, index) => {
+      
         const ratio = img.width / img.height;
         const size: MediaSize =
             ratio > 1.2 ? "wide" : ratio < 0.8 ? "tall" : "square";
