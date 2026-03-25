@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import CinematicImage from "../components/CinematicImage";
+ import { motion } from "framer-motion";
+import CinematicImage from "./CinematicImage";
 import type { MediaItem } from "../data/types";
 
 interface MasonryItemProps {
@@ -9,9 +9,9 @@ interface MasonryItemProps {
 }
 
 export function MasonryItem({ item, index, onClick }: MasonryItemProps) {
-   
     return (
         <motion.div
+            layoutId={`img-${item.id}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -19,10 +19,12 @@ export function MasonryItem({ item, index, onClick }: MasonryItemProps) {
             onClick={onClick}
             className="relative break-inside-avoid group cursor-zoom-in border border-white/5 bg-secondary overflow-hidden"
         >
-            <div className="relative w-full transition-transform duration-1000 ease-out group-hover:scale-105">
+            <div className="transition-transform duration-1000 ease-out group-hover:scale-105">
                 <CinematicImage
                     src={item.src}
                     alt={item.label}
+                    width={item.width}
+                    height={item.height}
                     className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
             </div>
