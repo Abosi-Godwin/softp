@@ -1,5 +1,6 @@
  import { v2 as cloudinary } from "cloudinary";
-import type { CloudinaryResource, MediaItem, MediaSize } from "../data/types";
+import type { CloudinaryResource, MediaItem, MediaSize } from
+"../app/gallery/data/types";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
