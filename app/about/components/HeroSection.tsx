@@ -1,4 +1,4 @@
- import { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import CinematicImage from "../../components/CinematicImage";
 
@@ -16,7 +16,8 @@ export function HeroSection() {
                         transition={{ duration: 0.8 }}
                     >
                         <span className="text-gold tracking-[0.6em] text-[10px] uppercase font-bold block mb-8">
-                            First-Class Graduate // University of Nigeria, Nsukka
+                            First-Class Graduate // University of Nigeria,
+                            Nsukka
                         </span>
                         <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-heading font-black leading-[0.85] tracking-tighter uppercase">
                             PAULINUS
@@ -40,8 +41,7 @@ export function HeroSection() {
                     <CinematicImage
                         src="FB_IMG_1773001100452_sgri5k"
                         alt="Paulinus Onwumere Odinaka"
-                        width={900}
-                        height={1200}
+                        
                         className={`object-cover w-full h-full transition-[filter] duration-700 ease-in-out ${hovered ? "grayscale-0" : "grayscale"}`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-50 pointer-events-none" />
