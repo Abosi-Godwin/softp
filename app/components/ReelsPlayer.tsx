@@ -1,15 +1,25 @@
-import { CldVideoPlayer } from "next-cloudinary";
-import "next-cloudinary/dist/cld-video-player.css";
+ "use client";
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Layers, Zap } from "lucide-react";
+import { Layers } from "lucide-react";
 import { getCldVideoUrl } from "next-cloudinary";
 
-export default function AnimationCard({ item, index }) {
-    const videoRef = useRef(null);
+type AnimationItem = {
+    title: string;
+    tech: string;
+    desc: string;
+    publicId: string;
+};
 
-    // Autoplay on scroll into view (handles mobile — no hover there)
+type Props = {
+    item: AnimationItem;
+    index: number;
+};
+
+export default function AnimationCard({ item, index }: Props) {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
@@ -17,7 +27,7 @@ export default function AnimationCard({ item, index }) {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    video.play().catch(() => {}); // catch autoplay policy errors silently
+                    video.play().catch(() => {});
                 } else {
                     video.pause();
                 }
@@ -35,13 +45,12 @@ export default function AnimationCard({ item, index }) {
         format: "auto"
     });
 
-    // Poster: first frame as a compressed image via Cloudinary
     const posterUrl = getCldVideoUrl({
         src: item.publicId,
         assetType: "video",
         format: "jpg",
         quality: "auto",
-        rawTransformations: ["so_0"] // seek to 0s for the poster frame
+        rawTransformations: ["so_0"]
     });
 
     return (
@@ -54,38 +63,33 @@ export default function AnimationCard({ item, index }) {
         >
             {/* Screen Container */}
             <div className="relative aspect-video bg-secondary overflow-hidden rounded-sm border border-white/5">
+
                 {/* Scanning line */}
                 <motion.div
                     animate={{ top: ["-10%", "110%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        duration: 3,
-                        ease: "linear"
-                    }}
+                    transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
                     className="absolute left-0 w-full h-[2px] bg-gold/30 blur-sm z-20 pointer-events-none"
                 />
 
-                {/* Video */}
-                <div className="absolute inset-0 gray7scale group-hover:grayyscale-0 transition-all duration-700 ease-in-out">
-                    <video
-                        ref={videoRef}
-                        src={videoUrl}
-                        poster={posterUrl}
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        onMouseOver={() => videoRef.current?.play()}
-                        onMouseOut={() => videoRef.current?.pause()}
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-                </div>
+                {/* Video — filter applied directly so it works on the compositor layer */}
+                <video
+                    ref={videoRef}
+                    src={videoUrl}
+                    poster={posterUrl}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onMouseOver={() => videoRef.current?.play()}
+                    onMouseOut={() => videoRef.current?.pause()}
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                />
 
                 {/* Corner UI overlays */}
-                <div className="absolute top-4 left-4 text-[8px] text-white/20 font-mono tracking-widest uppercase">
+                <div className="absolute top-4 left-4 text-[8px] text-white/20 font-mono tracking-widest uppercase z-10">
                     REC • 00:00:24:02
                 </div>
-                <div className="absolute bottom-4 right-4 flex gap-2 items-center">
+                <div className="absolute bottom-4 right-4 flex gap-2 items-center z-10">
                     <div className="w-1 h-1 bg-gold rounded-full animate-pulse" />
                     <div className="w-1 h-1 bg-white/20 rounded-full" />
                 </div>
@@ -115,4 +119,3 @@ export default function AnimationCard({ item, index }) {
         </motion.div>
     );
 }
- 
