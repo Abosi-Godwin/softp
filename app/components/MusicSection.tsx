@@ -1,4 +1,4 @@
- "use client";
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ArrowUpRight } from "lucide-react";
@@ -9,51 +9,23 @@ const TRACKS = [
         title: "Play Boy",
         duration: "2:36",
         genre: "Afrobeat",
-        spotifyId: "11Y0WhshKM6gXLHOHG0LfD",
+        spotifyId: "11Y0WhshKM6gXLHOHG0LfD"
     },
     {
         id: "02",
         title: "The Boy",
         duration: "3:09",
         genre: "Afrobeat",
-        spotifyId: "0dJNbgS2Khov8MzIoRlVya",
+        spotifyId: "0dJNbgS2Khov8MzIoRlVya"
     },
     {
         id: "03",
         title: "Neon Pulse",
         duration: "2:58",
         genre: "Electronic / Synth",
-        spotifyId: "YOUR_SPOTIFY_ID_HERE", // ← replace with real ID
-    },
+        spotifyId: "YOUR_SPOTIFY_ID_HERE" // ← replace with real ID
+    }
 ];
-
-function Equalizer({ active }) {
-    return (
-        <div className="flex items-end gap-[3px] h-4">
-            {[0.9, 1.5, 0.7, 1.2].map((speed, i) => (
-                <motion.div
-                    key={i}
-                    animate={
-                        active
-                            ? { height: ["4px", "16px", "6px", "14px", "4px"] }
-                            : { height: "4px" }
-                    }
-                    transition={
-                        active
-                            ? {
-                                  repeat: Infinity,
-                                  duration: speed,
-                                  ease: "easeInOut",
-                                  delay: i * 0.15,
-                              }
-                            : { duration: 0.3 }
-                    }
-                    className="w-[2px] rounded-full bg-gold/60 group-hover:bg-gold transition-colors"
-                />
-            ))}
-        </div>
-    );
-}
 
 export default function MusicSection() {
     const [activeTrack, setActiveTrack] = useState(TRACKS[0]);
@@ -74,7 +46,6 @@ export default function MusicSection() {
 
                     {/* ── Left: Context ── */}
                     <div className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-32">
-
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -95,7 +66,9 @@ export default function MusicSection() {
                             className="text-5xl lg:text-7xl font-heading font-medium text-letters-primary leading-tight"
                         >
                             The Sound <br />
-                            <span className="italic text-gold/80">Of Story.</span>
+                            <span className="italic text-gold/80">
+                                Of Story.
+                            </span>
                         </motion.h2>
 
                         <motion.p
@@ -172,10 +145,7 @@ export default function MusicSection() {
                                     transition={{ delay: i * 0.12, duration: 0.5 }}
                                     onClick={() => setActiveTrack(track)}
                                     className={`group relative flex items-center justify-between p-6 lg:p-8 border-b border-white/5 transition-all duration-300 cursor-pointer
-                                        ${isActive
-                                            ? "bg-white/[0.05]"
-                                            : "hover:bg-white/[0.02]"
-                                        }`}
+                                        ${isActive ? "bg-white/[0.05]" : "hover:bg-white/[0.02]"}`}
                                 >
                                     {/* Active left accent bar */}
                                     <AnimatePresence>
@@ -194,10 +164,7 @@ export default function MusicSection() {
                                         {/* Track number */}
                                         <span
                                             className={`font-heading text-sm italic transition-colors duration-300 tabular-nums
-                                                ${isActive
-                                                    ? "text-gold"
-                                                    : "text-letters-muted/30 group-hover:text-gold/60"
-                                                }`}
+                                                ${isActive ? "text-gold" : "text-letters-muted/30 group-hover:text-gold/60"}`}
                                         >
                                             {track.id}
                                         </span>
@@ -220,17 +187,12 @@ export default function MusicSection() {
                                     </div>
 
                                     <div className="flex items-center gap-5">
-                                        {/* Equalizer — only animates on active track */}
-                                        <div className="hidden md:block">
-                                            <Equalizer active={isActive} />
-                                        </div>
-
                                         {/* Duration */}
                                         <span className="text-letters-muted text-xs font-mono tabular-nums">
                                             {track.duration}
                                         </span>
 
-                                        {/* Play / Pause button */}
+                                        {/* Play button */}
                                         <motion.div
                                             whileTap={{ scale: 0.92 }}
                                             className={`p-3 rounded-full border transition-all duration-300
