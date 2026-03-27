@@ -39,7 +39,7 @@ export default function BackgroundReveal({
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             },
-                            exit: { duration: 0.4 }
+                           
                         }}
                     >
                         <CinematicImage

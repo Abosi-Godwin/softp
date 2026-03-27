@@ -187,7 +187,7 @@ export default function RootLayout({
                 <Header />
                 <main className="flex-grow py-10">{children}</main>
                 <Footer />
-                {/* Google Analytics — replace GA_MEASUREMENT_ID */}
+
                 <GoogleAnalytics gaId="G-EXQ46LPDJN" />
             </body>
         </html>

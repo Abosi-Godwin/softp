@@ -3,10 +3,21 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import CinematicImage from "../components/CinematicImage";
 
-const PortfolioRow = ({ project, index }) => {
+interface Project {
+    title: string;
+    image: string;
+    category: string;
+    year: string | number;
+}
+
+interface PortfolioProps {
+    project: Project;
+    index: number;
+}
+const PortfolioRow = ({ project, index }: PortfolioProps) => {
     return (
         <motion.div
-            key={project.title}
+  
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.8 }}
