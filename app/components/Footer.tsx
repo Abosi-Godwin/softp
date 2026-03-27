@@ -45,7 +45,7 @@ export default function Footer() {
                             Navigate
                         </h3>
                         {[
-                            "About",
+                            "Home",
                             "Acting",
                             "Music",
                             "Animation",
