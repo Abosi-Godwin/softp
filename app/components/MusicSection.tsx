@@ -6,18 +6,19 @@ import { Play, ArrowUpRight } from "lucide-react";
 const TRACKS = [
     {
         id: "01",
-        title: "Play Boy",
-        duration: "2:36",
+        title: "The Boy",
+        duration: "3:09",
         genre: "Afrobeat",
         spotifyId: "11Y0WhshKM6gXLHOHG0LfD"
     },
     {
         id: "02",
-        title: "The Boy",
-        duration: "3:09",
+        title: "Play Boy",
+        duration: "2:36",
         genre: "Afrobeat",
         spotifyId: "0dJNbgS2Khov8MzIoRlVya"
     },
+
     {
         id: "03",
         title: "Neon Pulse",
@@ -43,7 +44,6 @@ export default function MusicSection() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-12 gap-16 items-start">
-
                     {/* ── Left: Context ── */}
                     <div className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-32">
                         <motion.div
@@ -123,7 +123,6 @@ export default function MusicSection() {
 
                     {/* ── Right: Tracklist + Embed ── */}
                     <div className="lg:col-span-7 flex flex-col">
-
                         {/* Track count */}
                         <div className="flex justify-between items-center pb-4 border-b border-white/5 mb-2">
                             <span className="text-[9px] uppercase tracking-[0.3em] text-letters-muted/40">
@@ -142,7 +141,10 @@ export default function MusicSection() {
                                     initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: i * 0.12, duration: 0.5 }}
+                                    transition={{
+                                        delay: i * 0.12,
+                                        duration: 0.5
+                                    }}
                                     onClick={() => setActiveTrack(track)}
                                     className={`group relative flex items-center justify-between p-6 lg:p-8 border-b border-white/5 transition-all duration-300 cursor-pointer
                                         ${isActive ? "bg-white/[0.05]" : "hover:bg-white/[0.02]"}`}
@@ -173,9 +175,10 @@ export default function MusicSection() {
                                         <div className="flex flex-col gap-1">
                                             <h3
                                                 className={`text-xl lg:text-2xl font-heading transition-all duration-500
-                                                    ${isActive
-                                                        ? "text-letters-primary tracking-wider"
-                                                        : "text-letters-primary/70 group-hover:text-letters-primary group-hover:tracking-wider"
+                                                    ${
+                                                        isActive
+                                                            ? "text-letters-primary tracking-wider"
+                                                            : "text-letters-primary/70 group-hover:text-letters-primary group-hover:tracking-wider"
                                                     }`}
                                             >
                                                 {track.title}
@@ -196,12 +199,16 @@ export default function MusicSection() {
                                         <motion.div
                                             whileTap={{ scale: 0.92 }}
                                             className={`p-3 rounded-full border transition-all duration-300
-                                                ${isActive
-                                                    ? "border-gold bg-gold/15 text-gold"
-                                                    : "border-white/10 text-letters-primary group-hover:border-gold/50 group-hover:bg-gold/10 group-hover:text-gold"
+                                                ${
+                                                    isActive
+                                                        ? "border-gold bg-gold/15 text-gold"
+                                                        : "border-white/10 text-letters-primary group-hover:border-gold/50 group-hover:bg-gold/10 group-hover:text-gold"
                                                 }`}
                                         >
-                                            <Play size={15} className="fill-current" />
+                                            <Play
+                                                size={15}
+                                                className="fill-current"
+                                            />
                                         </motion.div>
                                     </div>
                                 </motion.div>
