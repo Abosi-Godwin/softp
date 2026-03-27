@@ -14,14 +14,12 @@ export default function CinematicImage({ src, alt, className }: CinematicImagePr
             fill
             src={src}
             alt={alt}
-          loading="eager"
+            loading="eager"
             quality="auto"
             format="auto"
-            
             crop="fill"
             gravity="auto"
             sizes="(max-width: 768px) 100vw, 50vw"
-           
             className={`object-cover transition-[filter]  duration-700
             ease-in-out ${className}`}
         />

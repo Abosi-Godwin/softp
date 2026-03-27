@@ -128,6 +128,8 @@ const jsonLd = [
         sameAs: [
             "https://twitter.com/softp",
             "https://instagram.com/Offixial-softp",
+            "https://www.tiktok.com/@realsoftp001",
+            "https://www.linkedin.com/in/paulinus-onwumere-328835315/",
             "https://www.facebook.com/pauli.nus.onwumere.2025"
         ]
     },
@@ -186,6 +188,7 @@ export default function RootLayout({
                 <main className="flex-grow py-10">{children}</main>
                 <Footer />
                 {/* Google Analytics — replace GA_MEASUREMENT_ID */}
+                <GoogleAnalytics gaId="G-EXQ46LPDJN" />
             </body>
         </html>
     );

@@ -1,23 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-    Instagram,
-    Linkedin,
-    Video,
-    ExternalLink,
-    ArrowUpRight,
-    Heart
-} from "lucide-react";
 
+import { Video, ExternalLink, ArrowUpRight, Heart } from "lucide-react";
+import {
+    FaInstagram,
+    FaFacebook,
+    FaLinkedin,
+    FaYoutube,
+    FaTiktok
+} from "react-icons/fa";
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { name: "Instagram", icon: <Instagram size={14} />, href: "#" },
+        {
+            name: "Instagram",
+            icon: <FaInstagram size={14} />,
+            href: "https://www.instagram.com/offixial-softp"
+        },
+        {
+            name: "Facebook",
+            icon: <FaFacebook size={14} />,
+            href: "https://www.facebook.com/pauli.nus.onwumere.2025"
+        },
+        {
+            name: "LinkedIn",
+            icon: <FaLinkedin size={14} />,
+            href: "https://www.linkedin.com/in/paulinus-onwumere-328835315/"
+        },
+        {
+            name: "TikTok",
+            icon: <FaTiktok size={14} />,
+            href: "https://www.tiktok.com/@realsoftp001"
+        },
+      
         { name: "IMDb", icon: <ExternalLink size={14} />, href: "#" },
-        { name: "LinkedIn", icon: <Linkedin size={14} />, href: "#" },
         { name: "Vimeo", icon: <Video size={14} />, href: "#" }
+    ];
+
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Gallery", href: "/gallery" },
+        { name: "Bookings", href: "/bookings" },
+        { name: "Portfolio", href: "/portfolio" }
     ];
 
     return (
@@ -33,9 +60,8 @@ export default function Footer() {
                             SOFT-P
                         </h2>
                         <p className="max-w-sm text-letters-muted text-[10px] leading-[2] tracking-[0.3em] uppercase font-light">
-                           
-                           Multidisciplinary Artist <br />
-& Strategic Creative Partner.
+                            Multidisciplinary Artist <br />& Strategic Creative
+                            Partner.
                         </p>
                     </div>
 
@@ -44,20 +70,14 @@ export default function Footer() {
                         <h3 className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-4 opacity-80">
                             Navigate
                         </h3>
-                        {[
-                            "Home",
-                            "Acting",
-                            "Music",
-                            "Animation",
-                            "Gallery"
-                        ].map(item => (
+                        {navLinks.map(item => (
                             <a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
+                                key={item.name}
+                                href={item.href}
                                 className="group flex items-center gap-2 text-letters-muted hover:text-white transition-all duration-500 text-[10px] uppercase tracking-[0.2em]"
                             >
                                 <span className="w-0 group-hover:w-3 h-[1px] bg-gold transition-all duration-500" />
-                                {item}
+                                {item.name}
                             </a>
                         ))}
                     </div>
@@ -72,6 +92,8 @@ export default function Footer() {
                                 <a
                                     key={social.name}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"aria-label={social.name}
                                     className="group flex items-center gap-3 text-letters-muted hover:text-gold transition-all duration-500 text-[10px] uppercase tracking-[0.2em]"
                                 >
                                     <span className="p-2 border border-white/5 rounded-full group-hover:border-gold/30 transition-colors">
@@ -112,7 +134,7 @@ export default function Footer() {
                         whileHover={{ scale: 1.02 }}
                         className="flex items-center gap-2 group"
                     >
-                        <span className="font-light">Artistry by</span>
+                        <span className="font-light">Developed by</span>
                         <a
                             href="https://abosi.vercel.app"
                             target="_blank"
