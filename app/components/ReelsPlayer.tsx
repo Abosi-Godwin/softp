@@ -82,7 +82,7 @@ export default function AnimationCard({ item, index }: Props) {
                     preload="metadata"
                     onMouseOver={() => videoRef.current?.play()}
                     onMouseOut={() => videoRef.current?.pause()}
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 ease-in-out"
                 />
 
                 {/* Corner UI overlays */}
