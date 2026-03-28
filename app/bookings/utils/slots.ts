@@ -1,4 +1,4 @@
-import type { TimeSlot } from "../types";
+import type { TimeSlot } from "./types";
 
 function getFridayOfWeek(date: Date): Date {
     const d = new Date(date);

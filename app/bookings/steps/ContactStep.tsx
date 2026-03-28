@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { STEP_VARIANTS } from "../constants";
-import type { ContactInfo, TimeSlot } from "../types";
+import { STEP_VARIANTS } from "../data/constants";
+import type { ContactInfo, TimeSlot } from "../utils/types";
 
 interface ContactStepProps {
     contact: ContactInfo;

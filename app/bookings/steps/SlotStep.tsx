@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { STEP_VARIANTS } from "../constants";
+import { STEP_VARIANTS } from "../data/constants";
 import { groupSlotsByDate } from "../utils/slots";
-import type { TimeSlot } from "../types";
+import type { TimeSlot } from "../utils/types";
 
 interface SlotStepProps {
     slots: TimeSlot[];

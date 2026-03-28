@@ -3,12 +3,11 @@ import "./globals.css";
 
 import { Inter, Playfair_Display } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// ─── Fonts ───
+// ─── Fonts ──
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
@@ -21,14 +20,16 @@ const playfair = Playfair_Display({
     display: "swap"
 });
 
+// ─── Viewport ──
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
     themeColor: "#000000"
 };
 
-// ─── SEO Metadata ────
+// ─── SEO Metadata ───
 const BASE_URL = "https://softp.vercel.app";
+const OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 export const metadata: Metadata = {
     title: {
@@ -61,7 +62,17 @@ export const metadata: Metadata = {
         canonical: BASE_URL
     },
 
-    // ── Open Graph ──
+    // ── Icons (favicon, Apple touch icon) 
+    icons: {
+        icon: [
+            { url: "/favicon.ico", sizes: "any" },
+            { url: "/icon.png", type: "image/png", sizes: "32x32" }
+        ],
+        apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
+        shortcut: "/favicon.ico"
+    },
+
+    // ── Open Graph
     openGraph: {
         title: "Paulinus Onwumere Odinaka — Actor | Music Artist | 2D Animator",
         description:
@@ -70,7 +81,7 @@ export const metadata: Metadata = {
         siteName: "Paulinus Onwumere Odinaka Portfolio",
         images: [
             {
-                url: "/og-image.jpg",
+                url: OG_IMAGE,
                 width: 1200,
                 height: 630,
                 alt: "Paulinus Onwumere Odinaka Official Portfolio",
@@ -81,17 +92,17 @@ export const metadata: Metadata = {
         type: "website"
     },
 
-    // ── Twitter / X ──
+    // ── Twitter / X ─
     twitter: {
         card: "summary_large_image",
         title: "Paulinus Onwumere Odinaka — Actor | Music Artist | 2D Animator",
         description:
             "Official portfolio of Paulinus Onwumere Odinaka — actor, music artist, and 2D animation creator.",
-        images: ["/og-image.jpg"],
-        creator: "@softp" // ← replace with real handle
+        images: [OG_IMAGE], // absolute URL
+        creator: "@Offixial-softp" // ← replace with real handle
     },
 
-    // ── Robots ──
+    // ── Robots ───
     robots: {
         index: true,
         follow: true,
@@ -103,22 +114,20 @@ export const metadata: Metadata = {
         }
     },
 
-    // ── Verification ──
+    // ── Search Console Verification ──
     verification: {
         google: "8wKxFBoxKbThGGJsFMXBoid6P9uWONt00GcfrWKw0BU"
     }
 };
 
-// ── JSON-LD Structured Data (Person schema)
-
+// ─── JSON-LD Structured Data ───
 const jsonLd = [
-    // Person schema
     {
         "@context": "https://schema.org",
         "@type": "Person",
         name: "Paulinus Onwumere Odinaka",
         url: BASE_URL,
-        image: `${BASE_URL}/og-image.jpg`,
+        image: OG_IMAGE,
         jobTitle: ["Actor", "Music Artist", "2D Animator"],
         alumniOf: {
             "@type": "CollegeOrUniversity",
@@ -126,14 +135,14 @@ const jsonLd = [
         },
         nationality: "Nigerian",
         sameAs: [
-            "https://twitter.com/softp",
+            "https://twitter.com/Offixial-softp",
             "https://instagram.com/Offixial-softp",
             "https://www.tiktok.com/@realsoftp001",
             "https://www.linkedin.com/in/paulinus-onwumere-328835315/",
             "https://www.facebook.com/pauli.nus.onwumere.2025"
         ]
     },
-    // Website schema
+    // WebSite schema
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -153,25 +162,32 @@ const jsonLd = [
             {
                 "@type": "ListItem",
                 position: 2,
-                name: "Films",
-                item: `${BASE_URL}/films`
+                name: "About",
+                item: `${BASE_URL}/about`
             },
             {
                 "@type": "ListItem",
                 position: 3,
-                name: "Music",
-                item: `${BASE_URL}/music`
+                name: "Portfolio",
+                item: `${BASE_URL}/portfolio/`
             },
             {
                 "@type": "ListItem",
                 position: 4,
-                name: "Animation",
-                item: `${BASE_URL}/animation`
+                name: "Gallery",
+                item: `${BASE_URL}/gallery`
+            },
+            {
+                "@type": "ListItem",
+                position: 4,
+                name: "Bookings",
+                item: `${BASE_URL}/bookings`
             }
         ]
     }
 ];
 
+// ─── Root Layout ───
 export default function RootLayout({
     children
 }: {
@@ -179,11 +195,20 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+            <head>
+                <meta property="og:image:secure_url" content={OG_IMAGE} />
+            </head>
             <body className="font-body">
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
+                {jsonLd.map((schema, i) => (
+                    <script
+                        key={i}
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(schema)
+                        }}
+                    />
+                ))}
+
                 <Header />
                 <main className="flex-grow py-10">{children}</main>
                 <Footer />

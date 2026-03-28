@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { SERVICES, STEP_VARIANTS } from "../constants";
-import type { ServiceKey, Service } from "../types";
+import { SERVICES, STEP_VARIANTS } from "../data/constants";
+import type { ServiceKey, Service } from "../utils/types";
 
 interface ServiceStepProps {
     onSelect: (key: ServiceKey) => void;

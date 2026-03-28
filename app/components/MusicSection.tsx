@@ -6,17 +6,17 @@ import { Play, ArrowUpRight } from "lucide-react";
 const TRACKS = [
     {
         id: "01",
-        title: "The Boy",
-        duration: "3:09",
-        genre: "Afrobeat",
-        spotifyId: "11Y0WhshKM6gXLHOHG0LfD"
-    },
-    {
-        id: "02",
         title: "Play Boy",
         duration: "2:36",
         genre: "Afrobeat",
         spotifyId: "0dJNbgS2Khov8MzIoRlVya"
+    },
+    {
+        id: "02",
+        title: "The Boy",
+        duration: "3:09",
+        genre: "Afrobeat",
+        spotifyId: "11Y0WhshKM6gXLHOHG0LfD"
     },
 
     {

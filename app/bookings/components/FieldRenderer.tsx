@@ -1,5 +1,5 @@
 import { ChipGroup } from "./ChipGroup";
-import type { FormField } from "../types";
+import type { FormField } from "../utils/types";
 
 interface FieldRendererProps {
     field: FormField;

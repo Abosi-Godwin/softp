@@ -1,3 +1,5 @@
+ "use client";
+
 import { motion } from "framer-motion";
 import { ARCHIVE_WORKS } from "../data/about";
 

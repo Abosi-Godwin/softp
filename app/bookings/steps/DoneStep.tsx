@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import type { ServiceKey, TimeSlot, ContactInfo } from "../types";
-import { SERVICES } from "../constants";
+import type { ServiceKey, TimeSlot, ContactInfo } from "../utils/types";
+import { SERVICES } from "../data/constants";
 
 interface DoneStepProps {
     service: ServiceKey;

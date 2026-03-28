@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { Step } from "../types";
+import type { Step } from "../utils/types";
 
 const STEPS: Step[] = ["service", "details", "slot", "contact"];
 const LABELS = ["01 SERVICE", "02 PROJECT", "03 TIME", "04 CONTACT"];

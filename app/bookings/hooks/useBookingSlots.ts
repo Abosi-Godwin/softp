@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import type { TimeSlot } from "../types";
+import type { TimeSlot } from "../utils/types";
 import { generateSlots } from "../utils/slots";
 
 export function useBookingSlots(active: boolean) {

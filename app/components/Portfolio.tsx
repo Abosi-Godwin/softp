@@ -11,19 +11,19 @@ const PROJECTS = [
         title: "The Echoes Within",
         category: "Lead Role • Feature Film",
         year: "2025",
-        image: "1773034773509_wuwyym"
+        image: "1774701113376_hnbjuk"
     },
     {
         title: "Silent Rhythm",
         category: "Voice Actor • Animation",
         year: "2024",
-        image: "1773048647558_dznm5a"
+        image: "1774702105662_ndxcoq"
     },
     {
         title: "Aurora",
         category: "Original Score • Music",
         year: "2024",
-        image: "1773050829282_toqtbq"
+        image: "1774701628739_eqtsbo"
     }
 ];
 

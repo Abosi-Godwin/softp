@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { STEP_VARIANTS } from "../constants";
+import { STEP_VARIANTS } from "../data/constants";
 import { FieldRenderer } from "../components/FieldRenderer";
-import type { Service } from "../types";
+import type { Service } from "../utils/types";
 
 interface DetailsStepProps {
     svc: Service;
